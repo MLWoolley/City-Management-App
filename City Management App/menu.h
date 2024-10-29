@@ -1,11 +1,8 @@
 #pragma once
+#include "BinarySearchTree.h"
+#include "City.h"
 
-/***/
-void mainMenu(); //note this will have to take a binary tree of city objects as a referenced parameter
-
-/* These may not be needed in the publicly accessible header file
-void searchMenu();
-void reportMenu();
-void maxMinMenu();
-void editMenu();
+/** Calls the main menu recursively until the user exits the program.
+* @param cityTree Binary Search Tree of City objects to be used for operations
 */
+void mainMenu(BinarySearchTree<City>& cityTree);

@@ -1,4 +1,7 @@
 #include <iostream>
+#include "BinarySearchTree.h"
+#include "City.h"
+#include "menu.h"
 
 using namespace std;
 
@@ -11,5 +14,7 @@ using namespace std;
 
 int main()
 {
-    cout << "Hello World!\n";
+    BinarySearchTree<City> cityTree;
+    //write csv file data to cityTree by passing lines to City constructor
+    mainMenu(cityTree);
 }
