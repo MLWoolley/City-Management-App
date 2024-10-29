@@ -127,12 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="City.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BinarySearchTree.h" />
+    <ClInclude Include="BSTInterface.h" />
+    <ClInclude Include="City.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="utilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
