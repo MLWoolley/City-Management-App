@@ -1,4 +1,4 @@
-city,state_id,state_name,county_fips (zip code),county_name,population,land area (Sq miles),time zone
+city,state_id,state_name,county_fips_code,county_name,population,land area (Sq miles),time zone
 Akron,OH,Ohio,39153,Summit,565208,62.27,EST
 Albany,NY,New York,36001,Albany,586383,21.93,EST
 Albuquerque,NM,New Mexico,35001,Bernalillo,761195,188.9,MST
