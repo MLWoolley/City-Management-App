@@ -1,6 +1,6 @@
-#include <iostream>
 #include "menu.h"
 #include "utilities.h"
+#include "SearchByFipsCode.h"
 
 using namespace std;
 
@@ -45,13 +45,12 @@ void mainMenu(BinarySearchTree<City>& cityTree) {
 	}
 }
 
-/** Calls the search sub menu and performs the user-specified operation on cityTree.
-* @param cityTree Binary Search Tree of City objects to be used for operations
-*/
 void searchMenu(BinarySearchTree<City>& cityTree) {
 	bool backFlag = false;
+	vector<City> matchList;
 
 	while (!backFlag) {
+		util::printMenuLine();
 		cout << "SEARCH MENU" << endl;
 		util::printMenuLine();
 		cout << "1. Search by county FIPS code" << endl;
@@ -63,14 +62,16 @@ void searchMenu(BinarySearchTree<City>& cityTree) {
 		int choice = util::getInteger("Enter a menu choice: ", 0, 3);
 		util::printMenuLine();
 
+		//Clear list of matches
+		matchList.clear();
+
 		switch (choice) {
 		case 0:
 			cout << "Returning to main menu..." << endl;
 			backFlag = true;
 			break;
 		case 1:
-			//search by county fips code
-			//when a fips code is found in the structure, the program will display that the city was found and display all of the information about that city (needs to handle multiple matches - some counties (1 fips code per county) have multiple cities, e.g. NY county (36061) and LA county (06037))
+			searchByFipsCode(cityTree, matchList);
 			break;
 		case 2:
 			//search by state
@@ -83,16 +84,17 @@ void searchMenu(BinarySearchTree<City>& cityTree) {
 		default:
 			break;
 		};
+
+		if (!backFlag)
+			printMatches(matchList);
 	}
 }
 
-/** Calls the generate reports sub menu and performs the user-specified operation on cityTree.
-* @param cityTree Binary Search Tree of City objects to be used for operations
-*/
 void reportMenu(BinarySearchTree<City>& cityTree) {
 	bool backFlag = false;
 
 	while (!backFlag) {
+		util::printMenuLine();
 		cout << "GENERATE REPORTS MENU" << endl;
 		util::printMenuLine();
 		cout << "1. List all cities" << endl;
@@ -131,13 +133,11 @@ void reportMenu(BinarySearchTree<City>& cityTree) {
 	}
 }
 
-/** Calls the maximums and minimums sub menu and performs the user-specified operation on cityTree.
-* @param cityTree Binary Search Tree of City objects to be used for operations
-*/
 void maxMinMenu(BinarySearchTree<City>& cityTree) {
 	bool backFlag = false;
 
 	while (!backFlag) {
+		util::printMenuLine();
 		cout << "MINIMUMS AND MAXIMUMS MENU" << endl;
 		util::printMenuLine();
 		cout << "1. Maximum land area" << endl;
@@ -192,13 +192,11 @@ void maxMinMenu(BinarySearchTree<City>& cityTree) {
 	}
 }
 
-/** Calls the editing sub menu and performs the user-specified operation on cityTree.
-* @param cityTree Binary Search Tree of City objects to be used for operations
-*/
 void editMenu(BinarySearchTree<City>& cityTree) {
 	bool backFlag = false;
 
 	while (!backFlag) {
+		util::printMenuLine();
 		cout << "EDIT MENU" << endl;
 		util::printMenuLine();
 		cout << "1. Edit population" << endl; //
@@ -227,4 +225,30 @@ void editMenu(BinarySearchTree<City>& cityTree) {
 			break;
 		};
 	}
+}
+
+void searchByFipsCode(BinarySearchTree<City>& cityTree, vector<City>& matchList) {
+	
+	string testCode = "39153";
+	SearchByFipsCode sbfc(testCode);
+	cityTree.inOrderTraverse(sbfc);
+	matchList = sbfc.getMatchList();
+}
+
+
+
+void printMatches(vector<City> & matchList) {
+	cout << endl;
+	util::printMenuLine('*', 18);
+	cout << "* SEARCH RESULTS *" << endl;
+	util::printMenuLine('*', 18);
+	City::printHeaders();
+	for (City match : matchList) {
+		cout << match;
+	}
+	cout << endl;
+	util::printMenuLine('=', 20);
+	cout << "No. of matches: " << matchList.size() << endl;
+	util::printMenuLine('=', 20);
+	util::pressEnter();
 }

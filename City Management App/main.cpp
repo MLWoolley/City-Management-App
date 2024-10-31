@@ -19,7 +19,6 @@ int main() {
     BinarySearchTree<City> cityTree;
     string filename = "USCities-100-1.csv";
     buildTree(cityTree, filename);
-    cout << "Working!" << endl;
     mainMenu(cityTree);
 }
 

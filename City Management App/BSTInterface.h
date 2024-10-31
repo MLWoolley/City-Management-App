@@ -1,4 +1,5 @@
 #pragma once
+#include "Visitor.h"
 
 /** BST (Binary Search Tree) Interface specifies the Binary Tree ADT.
 * BSTInterface is templated to work with any primitive type or any
@@ -33,14 +34,20 @@ public:
 
 	/** Performs an in-order traversal of the BST.
 	* This means for each node, the left child is traversed,
-	* the current node is visited and then the right child is traversed. */
-	virtual void inOrderTraverse() const = 0;
+	* the current node is visited and then the right child is traversed.
+	* @param visitor Visitor pattern containing visit method
+	*/
+	virtual void inOrderTraverse(Visitor& visitor) const = 0;
 	/** Performs a pre-order traversal of the BST.
 	* This means for each node, the current node is visited,
-	* the left child is traversed and then the right child is traversed. */
-	virtual void preOrderTraverse() const = 0;
+	* the left child is traversed and then the right child is traversed.
+	* @param visitor Visitor pattern containing visit method
+	*/
+	virtual void preOrderTraverse(Visitor& visitor) const = 0;
 	/** Performs a post-order traversal of the BST.
 	* This means for each node, the left child is traversed,
-	* the right child is traversed and then the current node is visited. */
-	virtual void postOrderTraverse() const = 0;
+	* the right child is traversed and then the current node is visited.
+	* @param visitor Visitor pattern containing visit method
+	*/
+	virtual void postOrderTraverse(Visitor& visitor) const = 0;
 };

@@ -9,7 +9,7 @@
 * @see City.h for class declaration
 */
 
-const int City::colW[8] = { 20, 8, 20, 9, 15, 10, 6, 9 };
+const int City::colW[8] = { 16, 8, 20, 9, 20, 10, 6, 9 };
 const int City::totalWidth = colW[0] + colW[1] + colW[2] + colW[3] + colW[4]
 + colW[5] + colW[6] + colW[7] + 7 * 3; //all column widths plus all vertical spacers (numCols-1)
 
@@ -39,7 +39,6 @@ City::City(string line) {
 	getline(iss, timeZone);
 }
 
-//accessors
 string City::getCityName() const {
 	return cityName;
 }
@@ -65,7 +64,6 @@ string City::getTimeZone() const {
 	return timeZone;
 }
 
-//mutators
 void City::setCityName(string cityName) {
 	this->cityName = cityName;
 }
@@ -91,7 +89,6 @@ void City::setTimeZone(string timeZone) {
 	this->timeZone = timeZone;
 }
 
-//overloaded operators
 bool City::operator==(const City& c) const {
 	if (cityName.compare(c.cityName) == 0 &&
 		stateID.compare(c.stateID) == 0 &&
@@ -147,11 +144,9 @@ istream& operator>>(istream& in, City& c) {
 	c.cityName = util::getStringLine("Enter the City's name: ");
 	c.stateID = util::getStringLine("Enter the City's State ID (e.g. AK): ");
 	c.stateName = util::getStringLine("Enter the State's name: ");
-	c.countyFipsCode = "";
 	int fipsCode = util::getInteger("Enter the City's County FIPS Code: ", 1001, 56045);
 	//lowest FIPS code is 01001, highest is 56045
-	if (fipsCode < 10000) //4-digit FIPS code needs padding 0
-		c.countyFipsCode = "0";
+	c.countyFipsCode = (fipsCode < 10000) ? "0" : ""; //pad 0 as necessary
 	c.countyFipsCode += to_string(fipsCode);
 	c.countyName = util::getStringLine("Enter the County's name: ");
 	c.population = util::getInteger("Enter the City's population: ", 0, INT_MAX);
