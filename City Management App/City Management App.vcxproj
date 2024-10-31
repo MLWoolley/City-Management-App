@@ -139,6 +139,7 @@
     <ClInclude Include="menu.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="SearchByFipsCode.h" />
+    <ClInclude Include="SearchByStateID.h" />
     <ClInclude Include="utilities.h" />
     <ClInclude Include="Visitor.h" />
   </ItemGroup>

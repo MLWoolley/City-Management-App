@@ -35,19 +35,16 @@ public:
 	/** Performs an in-order traversal of the BST.
 	* This means for each node, the left child is traversed,
 	* the current node is visited and then the right child is traversed.
-	* @param visitor Visitor pattern containing visit method
 	*/
-	virtual void inOrderTraverse(Visitor& visitor) const = 0;
+	virtual void inOrderTraverse() const = 0;
 	/** Performs a pre-order traversal of the BST.
 	* This means for each node, the current node is visited,
 	* the left child is traversed and then the right child is traversed.
-	* @param visitor Visitor pattern containing visit method
 	*/
-	virtual void preOrderTraverse(Visitor& visitor) const = 0;
+	virtual void preOrderTraverse() const = 0;
 	/** Performs a post-order traversal of the BST.
 	* This means for each node, the left child is traversed,
 	* the right child is traversed and then the current node is visited.
-	* @param visitor Visitor pattern containing visit method
 	*/
-	virtual void postOrderTraverse(Visitor& visitor) const = 0;
+	virtual void postOrderTraverse() const = 0;
 };

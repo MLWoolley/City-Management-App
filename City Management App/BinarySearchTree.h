@@ -45,21 +45,25 @@ public:
     /** Performs an in-order traversal of the BST.
     * This means for each node, the left child is traversed,
     * the current node is visited and then the right child is traversed.
-    * @param visitor Visitor pattern containing visit method
     */
-    void inOrderTraverse(Visitor& visitor) const;
+    void inOrderTraverse() const;
     /** Performs a pre-order traversal of the BST.
     * This means for each node, the current node is visited,
     * the left child is traversed and then the right child is traversed.
-    * @param visitor Visitor pattern containing visit method
     */
-    void preOrderTraverse(Visitor& visitor) const;
+    void preOrderTraverse() const;
     /** Performs a post-order traversal of the BST.
     * This means for each node, the left child is traversed,
     * the right child is traversed and then the current node is visited.
+    */
+    void postOrderTraverse() const;
+    /** Performs an in-order traversal of the BST.
+    * This means for each node, the left child is traversed,
+    * the current node is visited and then the right child is traversed.
     * @param visitor Visitor pattern containing visit method
     */
-    void postOrderTraverse(Visitor& visitor) const;
+    void inOrderTraverseVisitor(Visitor& visitor) const;
+
     /** Prints a 2D representation of the BST using reverse in-order traversal.
     * @see https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
     */
@@ -90,21 +94,25 @@ private:
     * @see https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
     */
     void print2DUtil(Node<T>* currRoot, int space) const;
+
+    /** Performs an in-order traversal of the tree.
+    * @param currRoot Root of the current tree
+    */
+    void inorder(Node<T>* currRoot) const;
+    /** Performs a pre-order traversal of the tree.
+    * @param currRoot Root of the current tree
+    */
+    void preorder(Node<T>* currRoot) const;
+    /** Performs a post-order traversal of the tree.
+    * @param currRoot Root of the current tree
+    */
+    void postorder(Node<T>* currRoot) const;
     /** Performs an in-order traversal of the tree.
     * @param currRoot Root of the current tree
     * @param visitor Visitor pattern containing visit method
     */
-    void inorder(Node<T>* currRoot, Visitor& visitor) const;
-    /** Performs a pre-order traversal of the tree.
-    * @param currRoot Root of the current tree
-    * @param visitor Visitor pattern containing visit method
-    */
-    void preorder(Node<T>* currRoot, Visitor& visitor) const;
-    /** Performs a post-order traversal of the tree.
-    * @param currRoot Root of the current tree
-    * @param visitor Visitor pattern containing visit method
-    */
-    void postorder(Node<T>* currRoot, Visitor& visitor) const;
+    void inorderVisitor(Node<T>* currRoot, Visitor& visitor) const;
+
     /** Deletes all items from the tree using a postorder traversal.
     * @param currRoot Root of the current tree
     */
@@ -238,56 +246,74 @@ Node<T>* BinarySearchTree<T>::placeNode(Node<T>* currRoot, Node<T>* newNode) {
 }
 
 template <typename T>
-void BinarySearchTree<T>::inOrderTraverse(Visitor& visitor) const {
+void BinarySearchTree<T>::inOrderTraverse() const {
     if (root == nullptr) {
         cout << "The tree is empty." << endl;
         return;
     }
-    inorder(root, visitor);
+    inorder(root);
 }
 
 template <typename T>
-void BinarySearchTree<T>::inorder(Node<T>* currRoot, Visitor& visitor) const {
+void BinarySearchTree<T>::inorder(Node<T>* currRoot) const {
     if (currRoot != nullptr) {
-        inorder(currRoot->getLeftChild(), visitor); //left
-        visitor.visit(currRoot->getItem()); //visit
-        inorder(currRoot->getRightChild(), visitor); //right
+        inorder(currRoot->getLeftChild()); //left
+        cout << currRoot->getItem(); //visit
+        inorder(currRoot->getRightChild()); //right
     }
 }
 
 template<typename T>
-void BinarySearchTree<T>::preOrderTraverse(Visitor& visitor) const {
+void BinarySearchTree<T>::preOrderTraverse() const {
     if (root == nullptr) {
         cout << "The tree is empty." << endl;
         return;
     }
-    preorder(root, visitor);
+    preorder(root);
 }
 
 template<typename T>
-void BinarySearchTree<T>::preorder(Node<T>* currRoot, Visitor& visitor) const {
+void BinarySearchTree<T>::preorder(Node<T>* currRoot) const {
     if (currRoot != nullptr) {
-        visitor.visit(currRoot->getItem()); //visit
-        preorder(currRoot->getLeftChild() , visitor); //left
-        preorder(currRoot->getRightChild(), visitor); //right
+        cout << currRoot->getItem(); //visit
+        preorder(currRoot->getLeftChild()); //left
+        preorder(currRoot->getRightChild()); //right
     }
 }
 
 template<typename T>
-void BinarySearchTree<T>::postOrderTraverse(Visitor& visitor) const {
+void BinarySearchTree<T>::postOrderTraverse() const {
     if (root == nullptr) {
         cout << "The tree is empty." << endl;
         return;
     }
-    postorder(root, visitor);
+    postorder(root);
 }
 
 template<typename T>
-void BinarySearchTree<T>::postorder(Node<T>* currRoot, Visitor& visitor) const {
+void BinarySearchTree<T>::postorder(Node<T>* currRoot) const {
     if (currRoot != nullptr) {
-        postorder(currRoot->getLeftChild(), visitor); //left
-        postorder(currRoot->getRightChild(), visitor); //right
+        postorder(currRoot->getLeftChild()); //left
+        postorder(currRoot->getRightChild()); //right
+        cout << currRoot->getItem(); //visit
+    }
+}
+
+template <typename T>
+void BinarySearchTree<T>::inOrderTraverseVisitor(Visitor& visitor) const {
+    if (root == nullptr) {
+        cout << "The tree is empty." << endl;
+        return;
+    }
+    inorderVisitor(root, visitor);
+}
+
+template <typename T>
+void BinarySearchTree<T>::inorderVisitor(Node<T>* currRoot, Visitor& visitor) const {
+    if (currRoot != nullptr) {
+        inorderVisitor(currRoot->getLeftChild(), visitor); //left
         visitor.visit(currRoot->getItem()); //visit
+        inorderVisitor(currRoot->getRightChild(), visitor); //right
     }
 }
 

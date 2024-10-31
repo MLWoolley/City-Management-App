@@ -144,6 +144,7 @@ istream& operator>>(istream& in, City& c) {
 	c.cityName = util::getStringLine("Enter the City's name: ");
 	c.stateID = util::getStringLine("Enter the City's State ID (e.g. AK): ");
 	c.stateName = util::getStringLine("Enter the State's name: ");
+	c.stateName = util::toUpper(c.stateName.substr(0, 2)); //fix input to 2 uppercase chars
 	int fipsCode = util::getInteger("Enter the City's County FIPS Code: ", 1001, 56045);
 	//lowest FIPS code is 01001, highest is 56045
 	c.countyFipsCode = (fipsCode < 10000) ? "0" : ""; //pad 0 as necessary

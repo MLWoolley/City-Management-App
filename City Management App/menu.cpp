@@ -1,6 +1,8 @@
 #include "menu.h"
 #include "utilities.h"
 #include "SearchByFipsCode.h"
+#include <string>
+#include "SearchByStateID.h"
 
 using namespace std;
 
@@ -74,8 +76,7 @@ void searchMenu(BinarySearchTree<City>& cityTree) {
 			searchByFipsCode(cityTree, matchList);
 			break;
 		case 2:
-			//search by state
-			//when a state is found in the structure, the program will list the name of all cities in that state, their fips codes and their county (may need to handle multiple matches)
+			searchByStateID(cityTree, matchList);
 			break;
 		case 3:
 			//search by minimum land area
@@ -228,13 +229,26 @@ void editMenu(BinarySearchTree<City>& cityTree) {
 }
 
 void searchByFipsCode(BinarySearchTree<City>& cityTree, vector<City>& matchList) {
-	
-	string testCode = "39153";
-	SearchByFipsCode sbfc(testCode);
-	cityTree.inOrderTraverse(sbfc);
-	matchList = sbfc.getMatchList();
+	string searchFipsCode;
+
+	int fipsCode = util::getInteger("Enter the City's County FIPS Code: ", 1001, 56045);
+	//lowest FIPS code is 01001, highest is 56045
+	searchFipsCode = (fipsCode < 10000) ? "0" : ""; //pad 0 as necessary
+	searchFipsCode += to_string(fipsCode);
+
+	SearchByFipsCode visitor(searchFipsCode);
+	cityTree.inOrderTraverseVisitor(visitor);
+	matchList = visitor.getMatchList();
 }
 
+void searchByStateID(BinarySearchTree<City>& cityTree, vector<City>& matchList) {
+	string searchStateID = util::getStringLine("Enter the City's State Initials: ");
+	searchStateID = util::toUpper(searchStateID.substr(0, 2));
+
+	SearchByStateID visitor(searchStateID);
+	cityTree.inOrderTraverseVisitor(visitor);
+	matchList = visitor.getMatchList();
+}
 
 
 void printMatches(vector<City> & matchList) {
@@ -242,13 +256,19 @@ void printMatches(vector<City> & matchList) {
 	util::printMenuLine('*', 18);
 	cout << "* SEARCH RESULTS *" << endl;
 	util::printMenuLine('*', 18);
-	City::printHeaders();
-	for (City match : matchList) {
-		cout << match;
+
+	int numMatches = matchList.size();
+	if (numMatches > 0) { //print table if at least 1 match
+		cout << endl;
+		City::printHeaders();
+		for (City match : matchList) {
+			cout << match;
+		}
 	}
+
 	cout << endl;
 	util::printMenuLine('=', 20);
-	cout << "No. of matches: " << matchList.size() << endl;
+	cout << "No. of matches: " << numMatches << endl;
 	util::printMenuLine('=', 20);
 	util::pressEnter();
 }

@@ -1,6 +1,5 @@
 #pragma once
 #include "Visitor.h"
-
 #include <vector>
 #include <iostream>
 

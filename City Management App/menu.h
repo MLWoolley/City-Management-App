@@ -34,6 +34,12 @@ void editMenu(BinarySearchTree<City>& cityTree);
 */
 void searchByFipsCode(BinarySearchTree<City>& cityTree, vector<City>& matchList);
 
+/** Searches the specified BST for cities that match the user-specified state ID.
+* @param cityTree BST of City objects to search
+* @param matchList List of matches
+*/
+void searchByStateID(BinarySearchTree<City>& cityTree, vector<City>& matchList);
+
 /** Prints the matches for a search in matchList.
 * @param matchList List of matches
 */
