@@ -298,3 +298,5 @@ void listAllCitiesPostOrder(BinarySearchTree<City>& cityTree) {
 }
 
 //make a print matches version that prints only city name, stateId, landArea and population
+
+//for editing visitor patterns, must have an attribute bool success that is set to true if the City is successfully found and its value changed, and then a getSuccess method to return whether the operation has been successful. visit method should check if the city name matches the search parameter, and then change that city's population/land area by the specified amount.

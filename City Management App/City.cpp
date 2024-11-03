@@ -124,6 +124,9 @@ bool City::operator>(const City& c) const {
 void City::operator+=(int addPop) {
 	population += addPop;
 }
+void City::operator+=(double addArea) {
+	landArea += addArea;
+}
 ostream& operator<<(ostream& out, const City& c) {
 	out << setfill(' ') << left; //reset fill character
 	out << setw(City::colW[0]) << c.cityName << " | ";

@@ -89,10 +89,12 @@ public:
 	* @return True if the first City's population is greater than the second City's population, false otherwise
 	*/
 	bool operator>(const City& c) const;
-	/** Increases the population of this City by the specified value.
+	/** Increases/decreases the population of this City by the specified value.
 	* @param addPop Value to increase the City's population by
 	*/
 	void operator+=(int addPop);
+	/** Increases/decreases the land area of this City by the specified value. */
+	void operator+=(double addArea);
 	/** Writes the display information for the specified City to the specified output stream.
 	* @param out Output stream to write City data display to
 	* @param c City object to be displayed
