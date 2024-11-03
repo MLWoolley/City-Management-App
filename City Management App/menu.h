@@ -78,6 +78,12 @@ void listAllCitiesPostOrder(BinarySearchTree<City>& cityTree);
 */
 void findMaximumLandArea(BinarySearchTree<City>& cityTree, City& resultCity);
 
+/** Finds the City with the minimum land area.
+* @param cityTree BST of City objects to search
+* @param resultCity City with min land area
+*/
+void findMinimumLandArea(BinarySearchTree<City>& cityTree, City& resultCity);
+
 /** Prints the specified city's name, state, land area and population.
 * @param city City to print
 */

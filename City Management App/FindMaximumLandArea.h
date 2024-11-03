@@ -26,7 +26,9 @@ private:
 	City maxAreaCity;
 };
 
-inline FindMaximumLandArea::FindMaximumLandArea() : Visitor() {}
+inline FindMaximumLandArea::FindMaximumLandArea() : Visitor() {
+	maxAreaCity.setLandArea(-1);
+}
 
 inline void FindMaximumLandArea::visit(City city) {
 	if (city.getLandArea() > maxAreaCity.getLandArea())
