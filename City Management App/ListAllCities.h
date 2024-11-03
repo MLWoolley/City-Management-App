@@ -13,7 +13,7 @@ class ListAllCities : public Visitor {
 public:
 	/** Default constructor	*/
 	ListAllCities();
-	/** Checks the specified city, adds it as a match if its fips code matches the searchFipsCode.
+	/** Adds the city to the list.
 	* @param city City to add
 	*/
 	void visit(City city);

@@ -232,6 +232,7 @@ bool util::containsIgnoreCase(const string& bigString, const string& subString) 
 
 void util::printMenuLine(char lineChar, int length) {
     cout << std::setfill(lineChar) << std::setw(length) << "" << endl;
+    cout << std::setfill(' '); //reset fill char
 }
 
 void util::printMenuLine() {

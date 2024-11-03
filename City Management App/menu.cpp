@@ -6,6 +6,7 @@
 #include "SearchByMinimumLandArea.h"
 #include "ListAllCities.h"
 #include <iomanip>
+#include "FindMaximumLandArea.h"
 
 using namespace std;
 
@@ -153,7 +154,7 @@ void maxMinMenu(BinarySearchTree<City>& cityTree) {
 		int choice = util::getInteger("Enter a menu choice: ", 0, 6);
 		util::printMenuLine();
 
-		City myCity; //stores selected city for display
+		City resultCity;
 
 		switch (choice) {
 		case 0:
@@ -161,8 +162,7 @@ void maxMinMenu(BinarySearchTree<City>& cityTree) {
 			backFlag = true;
 			break;
 		case 1:
-			//get max land area
-			//Find the city with the largest land area
+			findMaximumLandArea(cityTree, resultCity);
 			break;
 		case 2:
 			//get min land area
@@ -188,7 +188,7 @@ void maxMinMenu(BinarySearchTree<City>& cityTree) {
 			break;
 		};
 		if (!backFlag) {
-			//display the city name, state ID, land area and population
+			printCity(resultCity);
 		}
 	}
 }
@@ -293,6 +293,7 @@ void listAllCitiesPopDensity(BinarySearchTree<City>& cityTree) {
 	cityTree.inOrderTraverseVisitor(visitor);
 	vector<City> cityList = visitor.getCityList();
 
+	//print results
 	int totalWidth = 40;
 	int cityNameWidth = 16;
 	int populationWidth = 10;
@@ -321,6 +322,23 @@ void listAllCitiesPostOrder(BinarySearchTree<City>& cityTree) {
 	util::pressEnter();
 }
 
-//make a print matches version that prints only city name, stateId, landArea and population
+void findMaximumLandArea(BinarySearchTree<City>& cityTree, City& resultCity) {
+	FindMaximumLandArea visitor;
+	cityTree.inOrderTraverseVisitor(visitor);
+	resultCity = visitor.getMaxAreaCity();
+}
+
+
+
+
+
+void printCity(City& city) {
+	util::printMenuLine();
+	cout << city.getCityName() << ", " << city.getStateID() << endl;
+	cout << "Population: " << util::intWithCommas(city.getPopulation()) << endl;
+	cout << "Land Area: " << city.getLandArea() << " sq. mi." << endl;
+	util::printMenuLine();
+	util::pressEnter();
+}
 
 //for editing visitor patterns, must have an attribute bool success that is set to true if the City is successfully found and its value changed, and then a getSuccess method to return whether the operation has been successful. visit method should check if the city name matches the search parameter, and then change that city's population/land area by the specified amount.

@@ -71,3 +71,14 @@ void listAllCitiesPopDensity(BinarySearchTree<City>& cityTree);
 * @param cityTree BST of City objects to list
 */
 void listAllCitiesPostOrder(BinarySearchTree<City>& cityTree);
+
+/** Finds the City with the maximum land area.
+* @param cityTree BST of City objects to search
+* @param resultCity City with max land area
+*/
+void findMaximumLandArea(BinarySearchTree<City>& cityTree, City& resultCity);
+
+/** Prints the specified city's name, state, land area and population.
+* @param city City to print
+*/
+void printCity(City& city);

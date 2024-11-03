@@ -123,9 +123,11 @@ bool City::operator>(const City& c) const {
 }
 void City::operator+=(int addPop) {
 	population += addPop;
+	if (population < 0) population = 0; //reset to 0 if now negative
 }
 void City::operator+=(double addArea) {
 	landArea += addArea;
+	if (landArea < 0) landArea = 0; //reset to 0 if now negative
 }
 ostream& operator<<(ostream& out, const City& c) {
 	out << setfill(' ') << left; //reset fill character
