@@ -4,6 +4,8 @@
 #include <string>
 #include "SearchByStateID.h"
 #include "SearchByMinimumLandArea.h"
+#include "ListAllCities.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -117,8 +119,7 @@ void reportMenu(BinarySearchTree<City>& cityTree) {
 			listAllCitiesInOrder(cityTree);
 			break;
 		case 2:
-			//list all cities by pop density
-			//same as option 1; lists only city name, population and land area
+			listAllCitiesPopDensity(cityTree);
 			break;
 		case 3:
 			//list all cities by time zone
@@ -287,7 +288,30 @@ void listAllCitiesInOrder(BinarySearchTree<City>& cityTree) {
 	util::pressEnter();
 }
 
+void listAllCitiesPopDensity(BinarySearchTree<City>& cityTree) {
+	ListAllCities visitor;
+	cityTree.inOrderTraverseVisitor(visitor);
+	vector<City> cityList = visitor.getCityList();
 
+	int totalWidth = 40;
+	int cityNameWidth = 16;
+	int populationWidth = 10;
+	int landAreaWidth = 6;
+	cout << endl;
+	util::printMenuLine(totalWidth);
+	cout << setfill(' ') << left; //reset fill character
+	cout << setw(cityNameWidth) << "City Name" << " | ";
+	cout << setw(populationWidth) << "Population" << " | ";
+	cout << setw(landAreaWidth) << "Sq mi" << " |" << endl;
+	util::printMenuLine(totalWidth);
+	cout << setfill(' ') << left;
+	for (City c : cityList) {
+		cout << setw(cityNameWidth) << c.getCityName() << " | ";
+		cout << setw(populationWidth) << right << util::intWithCommas(c.getPopulation()) << " | ";
+		cout << setw(landAreaWidth) << left << c.getLandArea() << " |" << endl;
+	}
+	cout << endl;
+}
 
 void listAllCitiesPostOrder(BinarySearchTree<City>& cityTree) {
 	cout << endl;

@@ -57,7 +57,15 @@ void printResults(vector<City>& resultList, string resultTitle);
 */
 void listAllCitiesInOrder(BinarySearchTree<City>& cityTree);
 
+/** Prints all Cities in the specified BST, displaying only city name, population and land area.
+* @param cityTree BST of City objects to list
+*/
+void listAllCitiesPopDensity(BinarySearchTree<City>& cityTree);
 
+/** Prints all Cities in the specified BST, displaying only city name, population and land area.
+* @param cityTree BST of City objects to list
+*/
+void listAllCitiesPopDensity(BinarySearchTree<City>& cityTree);
 
 /** Prints all Cities in the specified BST using post-order traversal.
 * @param cityTree BST of City objects to list

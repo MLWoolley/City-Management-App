@@ -168,7 +168,6 @@ void City::printHeaders() {
 	cout << setw(colW[2]) << "State Name" << " | ";
 	cout << setw(colW[3]) << "FIPS Code" << " | ";
 	cout << setw(colW[4]) << "County Name" << " | ";
-	//cout << setw(colW[5]) << c.population << " | ";
 	cout << setw(colW[5]) << "Population" << " | ";
 	cout << setw(colW[6]) << "Sq mi" << " | ";
 	cout << setw(colW[7]) << "Time Zone" << endl;
