@@ -114,8 +114,7 @@ void reportMenu(BinarySearchTree<City>& cityTree) {
 			backFlag = true;
 			break;
 		case 1:
-			//list all cities
-			//traverses the list (inorder) and prints the City at each Node.
+			listAllCitiesInOrder(cityTree);
 			break;
 		case 2:
 			//list all cities by pop density
@@ -126,7 +125,7 @@ void reportMenu(BinarySearchTree<City>& cityTree) {
 			//display a list of all valid time zones, allow for user entry - display the city name, state and zip code
 			break;
 		case 4:
-			//list tree in post order traversal order, print each Node's City
+			listAllCitiesPostOrder(cityTree);
 			break;
 		default:
 			break;
@@ -277,6 +276,24 @@ void printResults(vector<City> & resultList, string resultTitle) {
 	string resultString = (listSize == 1) ? " result." : " results.";
 	cout << listSize << resultString << endl;
 	util::printMenuLine('=', 20);
+	util::pressEnter();
+}
+
+void listAllCitiesInOrder(BinarySearchTree<City>& cityTree) {
+	cout << endl;
+	City::printHeaders();
+	cityTree.inOrderTraverse();
+	cout << endl;
+	util::pressEnter();
+}
+
+
+
+void listAllCitiesPostOrder(BinarySearchTree<City>& cityTree) {
+	cout << endl;
+	City::printHeaders();
+	cityTree.postOrderTraverse();
+	cout << endl;
 	util::pressEnter();
 }
 
