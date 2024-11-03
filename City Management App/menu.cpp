@@ -3,6 +3,7 @@
 #include "SearchByFipsCode.h"
 #include <string>
 #include "SearchByStateID.h"
+#include "SearchByMinimumLandArea.h"
 
 using namespace std;
 
@@ -79,15 +80,14 @@ void searchMenu(BinarySearchTree<City>& cityTree) {
 			searchByStateID(cityTree, matchList);
 			break;
 		case 3:
-			//search by minimum land area
-			//the function will request a minimum land area from the user and display all qualifying cities (can just print all info)
+			searchByMinimumLandArea(cityTree, matchList);
 			break;
 		default:
 			break;
 		};
 
 		if (!backFlag)
-			printMatches(matchList);
+			printResults(matchList, "SEARCH RESULTS");
 	}
 }
 
@@ -230,7 +230,6 @@ void editMenu(BinarySearchTree<City>& cityTree) {
 
 void searchByFipsCode(BinarySearchTree<City>& cityTree, vector<City>& matchList) {
 	string searchFipsCode;
-
 	int fipsCode = util::getInteger("Enter the City's County FIPS Code: ", 1001, 56045);
 	//lowest FIPS code is 01001, highest is 56045
 	searchFipsCode = (fipsCode < 10000) ? "0" : ""; //pad 0 as necessary
@@ -250,25 +249,35 @@ void searchByStateID(BinarySearchTree<City>& cityTree, vector<City>& matchList) 
 	matchList = visitor.getMatchList();
 }
 
+void searchByMinimumLandArea(BinarySearchTree<City>& cityTree, vector<City>& matchList) {
+	double searchMinimumArea = util::getDouble("Enter a minimum land area for Cities: ", 0, INT_MAX); //just eliminate negative values
 
-void printMatches(vector<City> & matchList) {
+	SearchByMinimumLandArea visitor(searchMinimumArea);
+	cityTree.inOrderTraverseVisitor(visitor);
+	matchList = visitor.getMatchList();
+}
+
+void printResults(vector<City> & resultList, string resultTitle) {
 	cout << endl;
 	util::printMenuLine('*', 18);
-	cout << "* SEARCH RESULTS *" << endl;
+	cout << "* " << resultTitle << " *" << endl;
 	util::printMenuLine('*', 18);
 
-	int numMatches = matchList.size();
-	if (numMatches > 0) { //print table if at least 1 match
+	int listSize = resultList.size();
+	if (listSize > 0) { //print table if at least 1 match
 		cout << endl;
 		City::printHeaders();
-		for (City match : matchList) {
-			cout << match;
+		for (City result : resultList) {
+			cout << result;
 		}
 	}
 
 	cout << endl;
 	util::printMenuLine('=', 20);
-	cout << "No. of matches: " << numMatches << endl;
+	string resultString = (listSize == 1) ? " result." : " results.";
+	cout << listSize << resultString << endl;
 	util::printMenuLine('=', 20);
 	util::pressEnter();
 }
+
+//make a print matches version that prints only city name, stateId, landArea and population

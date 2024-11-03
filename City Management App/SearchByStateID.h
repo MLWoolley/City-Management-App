@@ -3,6 +3,10 @@
 #include <vector>
 #include <iostream>
 
+/** SearchByStateID class, implements Visitor Interface, uses City Class.
+* @author Madeleine Woolley
+*/
+
 using namespace std;
 
 class SearchByStateID : public Visitor {

@@ -40,7 +40,14 @@ void searchByFipsCode(BinarySearchTree<City>& cityTree, vector<City>& matchList)
 */
 void searchByStateID(BinarySearchTree<City>& cityTree, vector<City>& matchList);
 
-/** Prints the matches for a search in matchList.
+/** Searches the specified BST for cities that match the user-specified minimum land area.
+* @param cityTree BST of City objects to search
 * @param matchList List of matches
 */
-void printMatches(vector<City>& matchList);
+void searchByMinimumLandArea(BinarySearchTree<City>& cityTree, vector<City>& matchList);
+
+/** Prints the results stored in resultList.
+* @param resultList List of results
+* @param resultTitle Title for results
+*/
+void printResults(vector<City>& resultList, string resultTitle);

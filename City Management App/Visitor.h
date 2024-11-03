@@ -1,7 +1,7 @@
 #pragma once
 #include "City.h"
 
-/** Visitor Interface for City class (?)
+/** Visitor Interface, uses City class.
 * @author Madeleine Woolley
 */
 
