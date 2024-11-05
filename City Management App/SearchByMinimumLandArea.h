@@ -18,7 +18,7 @@ public:
 	/** Checks the specified city, adds it as a match if its land area is greater than or equal to searchMinimumLandArea.
 	* @param city City to check
 	*/
-	void visit(City city);
+	void visit(City& city);
 	/** Returns the list of all matches.
 	* @return List of matches
 	*/
@@ -34,7 +34,7 @@ inline SearchByMinimumLandArea::SearchByMinimumLandArea(double searchMinimumLand
 	this->searchMinimumLandArea = searchMinimumLandArea;
 }
 
-inline void SearchByMinimumLandArea::visit(City city) {
+inline void SearchByMinimumLandArea::visit(City& city) {
 	if (city.getLandArea() >= searchMinimumLandArea)
 		matchList.push_back(city);
 }

@@ -12,6 +12,8 @@
 #include "FindMinimumPopulation.h"
 #include "FindMaximumPopulationDensity.h"
 #include "FindMinimumPopulationDensity.h"
+#include "EditPopulation.h"
+#include "EditLandArea.h"
 
 using namespace std;
 
@@ -200,8 +202,8 @@ void editMenu(BinarySearchTree<City>& cityTree) {
 		util::printMenuLine();
 		cout << "EDIT MENU" << endl;
 		util::printMenuLine();
-		cout << "1. Edit population" << endl; //
-		cout << "2. Edit land area" << endl; //
+		cout << "1. Edit population" << endl;
+		cout << "2. Edit land area" << endl;
 		cout << "0. Back" << endl;
 		util::printMenuLine();
 
@@ -214,13 +216,10 @@ void editMenu(BinarySearchTree<City>& cityTree) {
 			backFlag = true;
 			break;
 		case 1:
-			//edit population
-			//let the user enter a city name and a value to change the population by, then change that City's population
+			editPopulation(cityTree);
 			break;
 		case 2:
-			//edit land area
-			//let the user enter a city name and a value to change the land area by, then change that City's land area
-			//should city have a += operator that takes a double? It would allow me to use the += operator to alter both attributes concurrently...
+			editLandArea(cityTree);
 			break;
 		default:
 			break;
@@ -367,4 +366,26 @@ void printCity(City& city) {
 	util::pressEnter();
 }
 
+void editPopulation(BinarySearchTree<City>& cityTree) {
+	string cityName = util::getStringLine("Enter a City name: ");
+	int popVal = util::getInteger("Enter a value to change the population by: ");
+
+	EditPopulation visitor(cityName, popVal);
+	cityTree.inOrderTraverseVisitor(visitor);
+	if (!visitor.getSuccess())
+		cout << "\"" << cityName << "\" not found. Please try again." << endl;
+}
+
+void editLandArea(BinarySearchTree<City>& cityTree) {
+	string cityName = util::getStringLine("Enter a City name: ");
+	double areaVal = util::getDouble("Enter a value to change the land area by: ");
+
+	EditLandArea visitor(cityName, areaVal);
+	cityTree.inOrderTraverseVisitor(visitor);
+	if (!visitor.getSuccess())
+		cout << "\"" << cityName << "\" not found. Please try again." << endl;
+}
+
 //for editing visitor patterns, must have an attribute bool success that is set to true if the City is successfully found and its value changed, and then a getSuccess method to return whether the operation has been successful. visit method should check if the city name matches the search parameter, and then change that city's population/land area by the specified amount.
+
+//list all cities by time zone - just allow user to enter a specific time zone (have an array of allowed time zones, error check until you get a valid one) and then call a visitor pattern that checks a given City - if its time zone matches the saved time zone (like with the search menu visitors) then print that City's name, state and zip code. Print headers above first similar to menu option 2/2

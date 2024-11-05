@@ -16,7 +16,7 @@ public:
 	/** Adds the city to the list.
 	* @param city City to add
 	*/
-	void visit(City city);
+	void visit(City& city);
 	/** Returns the list of all Cities.
 	* @return List of Cities
 	*/
@@ -28,7 +28,7 @@ private:
 
 inline ListAllCities::ListAllCities() : Visitor() {}
 
-inline void ListAllCities::visit(City city) {
+inline void ListAllCities::visit(City& city) {
 	cityList.push_back(city);
 }
 

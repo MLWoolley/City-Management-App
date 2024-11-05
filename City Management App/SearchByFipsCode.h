@@ -18,7 +18,7 @@ public:
 	/** Checks the specified city, adds it as a match if its fips code matches the searchFipsCode.
 	* @param city City to check
 	*/
-	void visit(City city);
+	void visit(City& city);
 	/** Returns the list of all matches.
 	* @return List of matches
 	*/
@@ -34,7 +34,7 @@ inline SearchByFipsCode::SearchByFipsCode(string searchFipsCode) : Visitor() {
 	this->searchFipsCode = searchFipsCode;
 }
 
-inline void SearchByFipsCode::visit(City city) {
+inline void SearchByFipsCode::visit(City& city) {
 	if (city.getCountyFipsCode().compare(searchFipsCode) == 0)
 		matchList.push_back(city);
 }

@@ -11,7 +11,7 @@ public:
 	Visitor();
 
 	/** Visitor method upon a City object */
-	virtual void visit(City city) = 0;
+	virtual void visit(City& city) = 0;
 };
 
 inline Visitor::Visitor() {}

@@ -312,7 +312,9 @@ template <typename T>
 void BinarySearchTree<T>::inorderVisitor(Node<T>* currRoot, Visitor& visitor) const {
     if (currRoot != nullptr) {
         inorderVisitor(currRoot->getLeftChild(), visitor); //left
-        visitor.visit(currRoot->getItem()); //visit
+        T item = currRoot->getItem();
+        visitor.visit(item); //visit
+        currRoot->setItem(item); //add any changes to item
         inorderVisitor(currRoot->getRightChild(), visitor); //right
     }
 }

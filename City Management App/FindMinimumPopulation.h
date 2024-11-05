@@ -16,7 +16,7 @@ public:
 	/** Checks the specified city, replaces it as the minPopCity if its population is less than the current minPopCity.
 	* @param city City to check
 	*/
-	void visit(City city);
+	void visit(City& city);
 	/** Returns the City with the minimum population.
 	* @return City with minimum population
 	*/
@@ -30,7 +30,7 @@ inline FindMinimumPopulation::FindMinimumPopulation() : Visitor() {
 	minPopCity.setPopulation(-1);
 }
 
-inline void FindMinimumPopulation::visit(City city) {
+inline void FindMinimumPopulation::visit(City& city) {
 	if (minPopCity.getPopulation() == -1) //set to first city regardless of population
 		minPopCity = city;
 	else if (city.getPopulation() < minPopCity.getLandArea())

@@ -18,7 +18,7 @@ public:
 	/** Checks the specified city, adds it as a match if its state ID matches the searchStateID.
 	* @param city City to check
 	*/
-	void visit(City city);
+	void visit(City& city);
 	/** Returns the list of all matches.
 	* @return List of matches
 	*/
@@ -34,7 +34,7 @@ inline SearchByStateID::SearchByStateID(string searchStateID) : Visitor() {
 	this->searchStateID = searchStateID;
 }
 
-inline void SearchByStateID::visit(City city) {
+inline void SearchByStateID::visit(City& city) {
 	if (city.getStateID().compare(searchStateID) == 0)
 		matchList.push_back(city);
 }

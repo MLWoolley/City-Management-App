@@ -136,6 +136,8 @@
     <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="BSTInterface.h" />
     <ClInclude Include="City.h" />
+    <ClInclude Include="EditLandArea.h" />
+    <ClInclude Include="EditPopulation.h" />
     <ClInclude Include="FindMaximumLandArea.h" />
     <ClInclude Include="FindMaximumPopulation.h" />
     <ClInclude Include="FindMaximumPopulationDensity.h" />

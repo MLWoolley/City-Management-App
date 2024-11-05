@@ -16,7 +16,7 @@ public:
 	/** Checks the specified city, replaces it as the minAreaCity if its land area is less than the current minAreaCity.
 	* @param city City to check
 	*/
-	void visit(City city);
+	void visit(City& city);
 	/** Returns the City with the minimum land area.
 	* @return City with minimum land area
 	*/
@@ -30,7 +30,7 @@ inline FindMinimumLandArea::FindMinimumLandArea() : Visitor() {
 	minAreaCity.setLandArea(-1);
 }
 
-inline void FindMinimumLandArea::visit(City city) {
+inline void FindMinimumLandArea::visit(City& city) {
 	if (minAreaCity.getLandArea() == -1) //set to first city regardless of land area
 		minAreaCity = city;
 	else if (city.getLandArea() < minAreaCity.getLandArea())

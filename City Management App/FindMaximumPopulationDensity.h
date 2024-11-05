@@ -16,7 +16,7 @@ public:
 	/** Checks the specified city, replaces it as the maxPopDenCity if its population is greater than the current maxPopDenCity.
 	* @param city City to check
 	*/
-	void visit(City city);
+	void visit(City& city);
 	/** Returns the City with the maximum population density.
 	* @return City with maximum population density
 	*/
@@ -36,7 +36,7 @@ inline FindMaximumPopulationDensity::FindMaximumPopulationDensity() : Visitor() 
 	maxPopDenCity.setLandArea(1); //so pop/area = -1
 }
 
-inline void FindMaximumPopulationDensity::visit(City city) {
+inline void FindMaximumPopulationDensity::visit(City& city) {
 	if (calcPopulationDensity(city) > calcPopulationDensity(maxPopDenCity))
 		maxPopDenCity = city;
 }

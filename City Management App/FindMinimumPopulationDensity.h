@@ -16,7 +16,7 @@ public:
 	/** Checks the specified city, replaces it as the minPopDenCity if its population is greater than the current minPopDenCity.
 	* @param city City to check
 	*/
-	void visit(City city);
+	void visit(City& city);
 	/** Returns the City with the minimum population density.
 	* @return City with minimum population density
 	*/
@@ -36,7 +36,7 @@ inline FindMinimumPopulationDensity::FindMinimumPopulationDensity() : Visitor() 
 	minPopDenCity.setLandArea(1); //so pop/area = -1
 }
 
-inline void FindMinimumPopulationDensity::visit(City city) {
+inline void FindMinimumPopulationDensity::visit(City& city) {
 	if (calcPopulationDensity(minPopDenCity) == -1) //set to first city regardless of population
 		minPopDenCity = city;
 	if (calcPopulationDensity(city) < calcPopulationDensity(minPopDenCity))

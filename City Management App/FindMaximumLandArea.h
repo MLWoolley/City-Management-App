@@ -16,7 +16,7 @@ public:
 	/** Checks the specified city, replaces it as the maxAreaCity if its land area is greater than the current maxAreaCity.
 	* @param city City to check
 	*/
-	void visit(City city);
+	void visit(City& city);
 	/** Returns the City with the maximum land area.
 	* @return City with maximum land area
 	*/
@@ -30,7 +30,7 @@ inline FindMaximumLandArea::FindMaximumLandArea() : Visitor() {
 	maxAreaCity.setLandArea(-1);
 }
 
-inline void FindMaximumLandArea::visit(City city) {
+inline void FindMaximumLandArea::visit(City& city) {
 	if (city.getLandArea() > maxAreaCity.getLandArea())
 		maxAreaCity = city;
 }

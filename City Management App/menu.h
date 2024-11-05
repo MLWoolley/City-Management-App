@@ -112,3 +112,13 @@ void findMinimumPopulationDensity(BinarySearchTree<City>& cityTree, City& result
 * @param city City to print
 */
 void printCity(City& city);
+
+/** Finds the City with the user-specified city name and changes its population by the user-specified amount.
+* @param cityTree BST of City objects to search
+*/
+void editPopulation(BinarySearchTree<City>& cityTree);
+
+/** Finds the City with the user-specified city name and changes its land area by the user-specified amount.
+* @param cityTree BST of City objects to search
+*/
+void editLandArea(BinarySearchTree<City>& cityTree);

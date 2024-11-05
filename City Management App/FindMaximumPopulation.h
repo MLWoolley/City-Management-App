@@ -16,7 +16,7 @@ public:
 	/** Checks the specified city, replaces it as the maxPopCity if its population is greater than the current maxPopCity.
 	* @param city City to check
 	*/
-	void visit(City city);
+	void visit(City& city);
 	/** Returns the City with the maximum population.
 	* @return City with maximum population
 	*/
@@ -30,7 +30,7 @@ inline FindMaximumPopulation::FindMaximumPopulation() : Visitor() {
 	maxPopCity.setPopulation(-1);
 }
 
-inline void FindMaximumPopulation::visit(City city) {
+inline void FindMaximumPopulation::visit(City& city) {
 	if (city.getPopulation() > maxPopCity.getPopulation())
 		maxPopCity = city;
 }
