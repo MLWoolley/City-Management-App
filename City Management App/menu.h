@@ -102,6 +102,12 @@ void findMinimumPopulation(BinarySearchTree<City>& cityTree, City& resultCity);
 */
 void findMaximumPopulationDensity(BinarySearchTree<City>& cityTree, City& resultCity);
 
+/** Finds the City with the minimum population density.
+* @param cityTree BST of City objects to search
+* @param resultCity City with min population density
+*/
+void findMinimumPopulationDensity(BinarySearchTree<City>& cityTree, City& resultCity);
+
 /** Prints the specified city's name, state, land area and population.
 * @param city City to print
 */

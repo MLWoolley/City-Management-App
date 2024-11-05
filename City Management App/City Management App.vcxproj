@@ -141,6 +141,7 @@
     <ClInclude Include="FindMaximumPopulationDensity.h" />
     <ClInclude Include="FindMinimumLandArea.h" />
     <ClInclude Include="FindMinimumPopulation.h" />
+    <ClInclude Include="FindMinimumPopulationDensity.h" />
     <ClInclude Include="ListAllCities.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="Node.h" />
