@@ -74,6 +74,9 @@
     <ClInclude Include="FindMinimumPopulation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FindMaximumPopulationDensity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="USCities-100-1.csv" />
