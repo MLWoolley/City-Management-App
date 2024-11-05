@@ -9,6 +9,7 @@
 #include "FindMaximumLandArea.h"
 #include "FindMinimumLandArea.h"
 #include "FindMaximumPopulation.h"
+#include "FindMinimumPopulation.h"
 
 using namespace std;
 
@@ -173,8 +174,7 @@ void maxMinMenu(BinarySearchTree<City>& cityTree) {
 			findMaximumPopulation(cityTree, resultCity);
 			break;
 		case 4:
-			//get min population
-			//Find the city with the smallest population
+			findMinimumPopulation(cityTree, resultCity);
 			break;
 		case 5:
 			//get max population density
@@ -340,6 +340,11 @@ void findMaximumPopulation(BinarySearchTree<City>& cityTree, City& resultCity) {
 	resultCity = visitor.getMaxPopCity();
 }
 
+void findMinimumPopulation(BinarySearchTree<City>& cityTree, City& resultCity) {
+	FindMinimumPopulation visitor;
+	cityTree.inOrderTraverseVisitor(visitor);
+	resultCity = visitor.getMinPopCity();
+}
 
 
 void printCity(City& city) {
