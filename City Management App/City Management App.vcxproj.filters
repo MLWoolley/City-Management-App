@@ -68,6 +68,9 @@
     <ClInclude Include="FindMinimumLandArea.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FindMaximumPopulation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="USCities-100-1.csv" />

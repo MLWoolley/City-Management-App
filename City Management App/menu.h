@@ -84,6 +84,12 @@ void findMaximumLandArea(BinarySearchTree<City>& cityTree, City& resultCity);
 */
 void findMinimumLandArea(BinarySearchTree<City>& cityTree, City& resultCity);
 
+/** Finds the City with the maximum population.
+* @param cityTree BST of City objects to search
+* @param resultCity City with max population
+*/
+void findMaximumPopulation(BinarySearchTree<City>& cityTree, City& resultCity);
+
 /** Prints the specified city's name, state, land area and population.
 * @param city City to print
 */
