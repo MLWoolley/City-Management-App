@@ -314,7 +314,6 @@ void listAllCitiesPopDensity(BinarySearchTree<City>& cityTree) {
 }
 
 void listCitiesByTimeZone(BinarySearchTree<City>& cityTree) {
-	//print out time zone selection
 	util::printMenuLine('*', 14);
 	cout << "* TIME ZONES *" << endl;
 	util::printMenuLine('*', 14);
@@ -322,7 +321,6 @@ void listCitiesByTimeZone(BinarySearchTree<City>& cityTree) {
 	util::printMenuLine();
 	cout << "Enter a time zone: " << flush;
 
-	//take and format user input
 	char input;
 	cin >> input;
 	string timeZone = "";
@@ -330,7 +328,6 @@ void listCitiesByTimeZone(BinarySearchTree<City>& cityTree) {
 	timeZone += "ST";
 	cout << timeZone << endl;
 
-	//visitor
 	SearchByTimeZone visitor(timeZone);
 	cityTree.inOrderTraverseVisitor(visitor);
 	vector<City> matches = visitor.getMatchList();
@@ -428,7 +425,3 @@ void editLandArea(BinarySearchTree<City>& cityTree) {
 	if (!visitor.getSuccess())
 		cout << "\"" << cityName << "\" not found. Please try again." << endl;
 }
-
-//for editing visitor patterns, must have an attribute bool success that is set to true if the City is successfully found and its value changed, and then a getSuccess method to return whether the operation has been successful. visit method should check if the city name matches the search parameter, and then change that city's population/land area by the specified amount.
-
-//list all cities by time zone - just allow user to enter a specific time zone (have an array of allowed time zones, error check until you get a valid one) and then call a visitor pattern that checks a given City - if its time zone matches the saved time zone (like with the search menu visitors) then print that City's name, state and zip code. Print headers above first similar to menu option 2/2
