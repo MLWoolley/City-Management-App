@@ -6,7 +6,13 @@
 /** Calls the main menu recursively until the user exits the program.
 * @param cityTree Binary Search Tree of City objects to be used for operations
 */
-void mainMenu(BinarySearchTree<City>& cityTree);
+void mainMenu(string& filename);
+
+/** Builds a tree of Cities from the data in the specified csv file.
+* @param cityTree Tree to be filled
+* @param filename Name of City data csv file
+*/
+void buildTree(BinarySearchTree<City>& cityTree, string& filename);
 
 /** Calls the search sub menu and performs the user-specified operation on cityTree.
 * @param cityTree Binary Search Tree of City objects to be used for operations

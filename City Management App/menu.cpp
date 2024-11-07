@@ -18,7 +18,10 @@
 
 using namespace std;
 
-void mainMenu(BinarySearchTree<City>& cityTree) {
+void mainMenu(string& filename) {
+	BinarySearchTree<City> cityTree;
+	buildTree(cityTree, filename);
+
 	bool exitFlag = false;
 
 	while (!exitFlag) {
@@ -57,6 +60,19 @@ void mainMenu(BinarySearchTree<City>& cityTree) {
 		util::printMenuLine();
 		util::pressEnter();
 	}
+}
+
+void buildTree(BinarySearchTree<City>& cityTree, string& filename) {
+	ifstream infile(filename);
+	util::checkFileOpen(infile, filename);
+
+	string line = "";
+	getline(infile, line); //skip headers
+	while (getline(infile, line)) {
+		City newCity(line);
+		cityTree.insert(newCity);
+	}
+	infile.close();
 }
 
 void searchMenu(BinarySearchTree<City>& cityTree) {
