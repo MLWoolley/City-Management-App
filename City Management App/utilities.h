@@ -152,18 +152,12 @@ namespace util {
 	bool containsIgnoreCase(const std::string& bigString, const std::string& subString);
 
 	/** Prints a menu line using a given char of a given length.
+	* Default char is '-', and default length is 30.
+	* The method accepts 0-2 arguments.
+	* @param length Length of the menu line
 	* @param lineChar Character used for menu line
-	* @param length Length of the menu line
 	*/
-	void printMenuLine(char lineChar, int length);
-
-	/** Prints a menu line using '-' of length 30. */
-	void printMenuLine();
-
-	/** Prints a menu line using '-' of a given length.
-	* @param length Length of the menu line
-	*/
-	void printMenuLine(int length);
+	void printMenuLine(int length = 30, char lineChar = '-');
 
 	/** Prompts user to press enter to continue. */
 	void pressEnter();

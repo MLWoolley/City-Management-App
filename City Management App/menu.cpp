@@ -262,9 +262,9 @@ void searchByMinimumLandArea(BinarySearchTree<City>& cityTree, vector<City>& mat
 
 void printResults(vector<City> & resultList) {
 	cout << endl;
-	util::printMenuLine('*', 18);
+	util::printMenuLine(18, '*');
 	cout << "* SEARCH RESULTS *" << endl;
-	util::printMenuLine('*', 18);
+	util::printMenuLine(18, '*');
 
 	int listSize = resultList.size();
 	if (listSize > 0) { //print table if at least 1 match

@@ -230,17 +230,9 @@ bool util::containsIgnoreCase(const string& bigString, const string& subString) 
     return found;
 }
 
-void util::printMenuLine(char lineChar, int length) {
+void util::printMenuLine(int length, char lineChar) {
     cout << std::setfill(lineChar) << std::setw(length) << "" << endl;
     cout << std::setfill(' '); //reset fill char
-}
-
-void util::printMenuLine() {
-    printMenuLine('-', 30);
-}
-
-void util::printMenuLine(int length) {
-    printMenuLine('-', length);
 }
 
 void util::pressEnter() {
