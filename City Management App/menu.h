@@ -48,9 +48,8 @@ void searchByMinimumLandArea(BinarySearchTree<City>& cityTree, vector<City>& mat
 
 /** Prints the results stored in resultList.
 * @param resultList List of results
-* @param resultTitle Title for results
 */
-void printResults(vector<City>& resultList, string resultTitle);
+void printResults(vector<City>& resultList);
 
 /** Prints all Cities in the specified BST using in-order traversal.
 * @param cityTree BST of City objects to list

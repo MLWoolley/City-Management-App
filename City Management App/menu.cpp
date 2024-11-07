@@ -98,7 +98,7 @@ void searchMenu(BinarySearchTree<City>& cityTree) {
 		};
 
 		if (!backFlag)
-			printResults(matchList, "SEARCH RESULTS");
+			printResults(matchList);
 	}
 }
 
@@ -139,6 +139,8 @@ void reportMenu(BinarySearchTree<City>& cityTree) {
 		default:
 			break;
 		};
+		if (!backFlag)
+			util::pressEnter();
 	}
 }
 
@@ -224,6 +226,8 @@ void editMenu(BinarySearchTree<City>& cityTree) {
 		default:
 			break;
 		};
+		if (!backFlag)
+			util::pressEnter();
 	}
 }
 
@@ -256,10 +260,10 @@ void searchByMinimumLandArea(BinarySearchTree<City>& cityTree, vector<City>& mat
 	matchList = visitor.getMatchList();
 }
 
-void printResults(vector<City> & resultList, string resultTitle) {
+void printResults(vector<City> & resultList) {
 	cout << endl;
 	util::printMenuLine('*', 18);
-	cout << "* " << resultTitle << " *" << endl;
+	cout << "* SEARCH RESULTS *" << endl;
 	util::printMenuLine('*', 18);
 
 	int listSize = resultList.size();
@@ -284,7 +288,6 @@ void listAllCitiesInOrder(BinarySearchTree<City>& cityTree) {
 	City::printHeaders();
 	cityTree.inOrderTraverse();
 	cout << endl;
-	util::pressEnter();
 }
 
 void listAllCitiesPopDensity(BinarySearchTree<City>& cityTree) {
@@ -358,7 +361,6 @@ void listAllCitiesPostOrder(BinarySearchTree<City>& cityTree) {
 	City::printHeaders();
 	cityTree.postOrderTraverse();
 	cout << endl;
-	util::pressEnter();
 }
 
 void findMaximumLandArea(BinarySearchTree<City>& cityTree, City& resultCity) {
@@ -410,6 +412,7 @@ void editPopulation(BinarySearchTree<City>& cityTree) {
 	string cityName = util::getStringLine("Enter a City name: ");
 	int popVal = util::getInteger("Enter a value to change the population by: ");
 
+	util::printMenuLine();
 	EditPopulation visitor(cityName, popVal);
 	cityTree.inOrderTraverseVisitor(visitor);
 	if (!visitor.getSuccess())
@@ -420,6 +423,7 @@ void editLandArea(BinarySearchTree<City>& cityTree) {
 	string cityName = util::getStringLine("Enter a City name: ");
 	double areaVal = util::getDouble("Enter a value to change the land area by: ");
 
+	util::printMenuLine();
 	EditLandArea visitor(cityName, areaVal);
 	cityTree.inOrderTraverseVisitor(visitor);
 	if (!visitor.getSuccess())
