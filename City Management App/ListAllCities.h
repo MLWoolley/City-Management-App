@@ -26,12 +26,12 @@ private:
 	vector<City> cityList;
 };
 
-inline ListAllCities::ListAllCities() : Visitor() {}
+ListAllCities::ListAllCities() : Visitor() {}
 
-inline void ListAllCities::visit(City& city) {
+void ListAllCities::visit(City& city) {
 	cityList.push_back(city);
 }
 
-inline vector<City> ListAllCities::getCityList() {
+vector<City> ListAllCities::getCityList() {
 	return cityList;
 }

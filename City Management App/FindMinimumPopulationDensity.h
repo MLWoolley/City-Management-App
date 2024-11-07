@@ -31,22 +31,22 @@ private:
 	double calcPopulationDensity(const City& c) const;
 };
 
-inline FindMinimumPopulationDensity::FindMinimumPopulationDensity() : Visitor() {
+FindMinimumPopulationDensity::FindMinimumPopulationDensity() : Visitor() {
 	minPopDenCity.setPopulation(-1);
 	minPopDenCity.setLandArea(1); //so pop/area = -1
 }
 
-inline void FindMinimumPopulationDensity::visit(City& city) {
+void FindMinimumPopulationDensity::visit(City& city) {
 	if (calcPopulationDensity(minPopDenCity) == -1) //set to first city regardless of population
 		minPopDenCity = city;
 	if (calcPopulationDensity(city) < calcPopulationDensity(minPopDenCity))
 		minPopDenCity = city;
 }
 
-inline City FindMinimumPopulationDensity::getMinPopDenCity() {
+City FindMinimumPopulationDensity::getMinPopDenCity() {
 	return minPopDenCity;
 }
 
-inline double FindMinimumPopulationDensity::calcPopulationDensity(const City& c) const {
+double FindMinimumPopulationDensity::calcPopulationDensity(const City& c) const {
 	return c.getPopulation() / c.getLandArea();
 }

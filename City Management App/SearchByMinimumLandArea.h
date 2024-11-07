@@ -30,15 +30,15 @@ private:
 	vector<City> matchList;
 };
 
-inline SearchByMinimumLandArea::SearchByMinimumLandArea(double searchMinimumLandArea) : Visitor() {
+SearchByMinimumLandArea::SearchByMinimumLandArea(double searchMinimumLandArea) : Visitor() {
 	this->searchMinimumLandArea = searchMinimumLandArea;
 }
 
-inline void SearchByMinimumLandArea::visit(City& city) {
+void SearchByMinimumLandArea::visit(City& city) {
 	if (city.getLandArea() >= searchMinimumLandArea)
 		matchList.push_back(city);
 }
 
-inline vector<City> SearchByMinimumLandArea::getMatchList() {
+vector<City> SearchByMinimumLandArea::getMatchList() {
 	return matchList;
 }

@@ -67,6 +67,12 @@ void listAllCitiesPopDensity(BinarySearchTree<City>& cityTree);
 */
 void listAllCitiesPopDensity(BinarySearchTree<City>& cityTree);
 
+/** Lists all cities in the BST in a user-specified time zone.
+* @param cityTree BST of City objects to list
+*/
+void listCitiesByTimeZone(BinarySearchTree<City>& cityTree);
+
+
 /** Prints all Cities in the specified BST using post-order traversal.
 * @param cityTree BST of City objects to list
 */

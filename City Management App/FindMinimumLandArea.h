@@ -26,17 +26,17 @@ private:
 	City minAreaCity;
 };
 
-inline FindMinimumLandArea::FindMinimumLandArea() : Visitor() {
+FindMinimumLandArea::FindMinimumLandArea() : Visitor() {
 	minAreaCity.setLandArea(-1);
 }
 
-inline void FindMinimumLandArea::visit(City& city) {
+void FindMinimumLandArea::visit(City& city) {
 	if (minAreaCity.getLandArea() == -1) //set to first city regardless of land area
 		minAreaCity = city;
 	else if (city.getLandArea() < minAreaCity.getLandArea())
 		minAreaCity = city;
 }
 
-inline City FindMinimumLandArea::getMinAreaCity() {
+City FindMinimumLandArea::getMinAreaCity() {
 	return minAreaCity;
 }

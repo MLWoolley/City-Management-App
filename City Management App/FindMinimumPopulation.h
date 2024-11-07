@@ -26,17 +26,17 @@ private:
 	City minPopCity;
 };
 
-inline FindMinimumPopulation::FindMinimumPopulation() : Visitor() {
+FindMinimumPopulation::FindMinimumPopulation() : Visitor() {
 	minPopCity.setPopulation(-1);
 }
 
-inline void FindMinimumPopulation::visit(City& city) {
+void FindMinimumPopulation::visit(City& city) {
 	if (minPopCity.getPopulation() == -1) //set to first city regardless of population
 		minPopCity = city;
 	else if (city.getPopulation() < minPopCity.getLandArea())
 		minPopCity = city;
 }
 
-inline City FindMinimumPopulation::getMinPopCity() {
+City FindMinimumPopulation::getMinPopCity() {
 	return minPopCity;
 }

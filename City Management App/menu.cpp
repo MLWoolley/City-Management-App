@@ -1,11 +1,11 @@
+#include <string>
+#include <iomanip>
 #include "menu.h"
 #include "utilities.h"
 #include "SearchByFipsCode.h"
-#include <string>
 #include "SearchByStateID.h"
 #include "SearchByMinimumLandArea.h"
 #include "ListAllCities.h"
-#include <iomanip>
 #include "FindMaximumLandArea.h"
 #include "FindMinimumLandArea.h"
 #include "FindMaximumPopulation.h"
@@ -14,6 +14,7 @@
 #include "FindMinimumPopulationDensity.h"
 #include "EditPopulation.h"
 #include "EditLandArea.h"
+#include "SearchByTimeZone.h"
 
 using namespace std;
 
@@ -130,8 +131,7 @@ void reportMenu(BinarySearchTree<City>& cityTree) {
 			listAllCitiesPopDensity(cityTree);
 			break;
 		case 3:
-			//list all cities by time zone
-			//display a list of all valid time zones, allow for user entry - display the city name, state and zip code
+			listCitiesByTimeZone(cityTree);
 			break;
 		case 4:
 			listAllCitiesPostOrder(cityTree);
@@ -309,6 +309,49 @@ void listAllCitiesPopDensity(BinarySearchTree<City>& cityTree) {
 		cout << setw(cityNameWidth) << c.getCityName() << " | ";
 		cout << setw(populationWidth) << right << util::intWithCommas(c.getPopulation()) << " | ";
 		cout << setw(landAreaWidth) << left << c.getLandArea() << " |" << endl;
+	}
+	cout << endl;
+}
+
+void listCitiesByTimeZone(BinarySearchTree<City>& cityTree) {
+	//print out time zone selection
+	util::printMenuLine('*', 14);
+	cout << "* TIME ZONES *" << endl;
+	util::printMenuLine('*', 14);
+	cout << "[E]ST | [C]ST | [M]ST | [P]ST" << endl;
+	util::printMenuLine();
+	cout << "Enter a time zone: " << flush;
+
+	//take and format user input
+	char input;
+	cin >> input;
+	string timeZone = "";
+	timeZone += toupper(input);
+	timeZone += "ST";
+	cout << timeZone << endl;
+
+	//visitor
+	SearchByTimeZone visitor(timeZone);
+	cityTree.inOrderTraverseVisitor(visitor);
+	vector<City> matches = visitor.getMatchList();
+
+	//print results
+	int totalWidth = 41;
+	int cityNameWidth = 16;
+	int stateIDWidth = 8;
+	int fipsCodeWidth = 9;
+	cout << endl;
+	util::printMenuLine(totalWidth);
+	cout << setfill(' ') << left; //reset fill character
+	cout << setw(cityNameWidth) << "City Name" << " | ";
+	cout << setw(stateIDWidth) << "State ID" << " | ";
+	cout << setw(fipsCodeWidth) << "Fips Code" << " |" << endl;
+	util::printMenuLine(totalWidth);
+	cout << setfill(' ') << left;
+	for (City c : matches) {
+		cout << setw(cityNameWidth) << c.getCityName() << " | ";
+		cout << setw(stateIDWidth) << c.getStateID() << " | ";
+		cout << setw(fipsCodeWidth) << c.getCountyFipsCode() << " |" << endl;
 	}
 	cout << endl;
 }

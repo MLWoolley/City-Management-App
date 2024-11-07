@@ -34,13 +34,13 @@ private:
 	bool success;
 };
 
-inline EditPopulation::EditPopulation(string searchCityName, int popVal) : Visitor() {
+EditPopulation::EditPopulation(string searchCityName, int popVal) : Visitor() {
 	this->searchCityName = searchCityName;
 	this->popVal = popVal;
 	success = false;
 }
 
-inline void EditPopulation::visit(City& city) {
+void EditPopulation::visit(City& city) {
 	if (city.getCityName().compare(searchCityName) == 0) {
 		cout << city.getCityName() << endl;
 		cout << "Old population: " << util::intWithCommas(city.getPopulation()) << endl;
@@ -51,6 +51,6 @@ inline void EditPopulation::visit(City& city) {
 	}
 }
 
-inline bool EditPopulation::getSuccess() {
+bool EditPopulation::getSuccess() {
 	return success;
 }

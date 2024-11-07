@@ -145,6 +145,7 @@
     <ClInclude Include="FindMinimumPopulation.h" />
     <ClInclude Include="FindMinimumPopulationDensity.h" />
     <ClInclude Include="ListAllCities.h" />
+    <ClInclude Include="SearchByTimeZone.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="SearchByFipsCode.h" />

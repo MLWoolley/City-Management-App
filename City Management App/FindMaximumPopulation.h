@@ -26,15 +26,15 @@ private:
 	City maxPopCity;
 };
 
-inline FindMaximumPopulation::FindMaximumPopulation() : Visitor() {
+FindMaximumPopulation::FindMaximumPopulation() : Visitor() {
 	maxPopCity.setPopulation(-1);
 }
 
-inline void FindMaximumPopulation::visit(City& city) {
+void FindMaximumPopulation::visit(City& city) {
 	if (city.getPopulation() > maxPopCity.getPopulation())
 		maxPopCity = city;
 }
 
-inline City FindMaximumPopulation::getMaxPopCity() {
+City FindMaximumPopulation::getMaxPopCity() {
 	return maxPopCity;
 }

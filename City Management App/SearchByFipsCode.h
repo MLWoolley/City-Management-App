@@ -30,15 +30,15 @@ private:
 	vector<City> matchList;
 };
 
-inline SearchByFipsCode::SearchByFipsCode(string searchFipsCode) : Visitor() {
+SearchByFipsCode::SearchByFipsCode(string searchFipsCode) : Visitor() {
 	this->searchFipsCode = searchFipsCode;
 }
 
-inline void SearchByFipsCode::visit(City& city) {
+void SearchByFipsCode::visit(City& city) {
 	if (city.getCountyFipsCode().compare(searchFipsCode) == 0)
 		matchList.push_back(city);
 }
 
-inline vector<City> SearchByFipsCode::getMatchList() {
+vector<City> SearchByFipsCode::getMatchList() {
 	return matchList;
 }

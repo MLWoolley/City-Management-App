@@ -30,15 +30,15 @@ private:
 	vector<City> matchList;
 };
 
-inline SearchByStateID::SearchByStateID(string searchStateID) : Visitor() {
+SearchByStateID::SearchByStateID(string searchStateID) : Visitor() {
 	this->searchStateID = searchStateID;
 }
 
-inline void SearchByStateID::visit(City& city) {
+void SearchByStateID::visit(City& city) {
 	if (city.getStateID().compare(searchStateID) == 0)
 		matchList.push_back(city);
 }
 
-inline vector<City> SearchByStateID::getMatchList() {
+vector<City> SearchByStateID::getMatchList() {
 	return matchList;
 }

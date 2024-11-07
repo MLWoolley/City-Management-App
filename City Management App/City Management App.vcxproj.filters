@@ -86,6 +86,9 @@
     <ClInclude Include="EditLandArea.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SearchByTimeZone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="USCities-100-1.csv" />

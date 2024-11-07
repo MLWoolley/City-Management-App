@@ -34,13 +34,13 @@ private:
 	bool success;
 };
 
-inline EditLandArea::EditLandArea(string searchCityName, double areaVal) : Visitor() {
+EditLandArea::EditLandArea(string searchCityName, double areaVal) : Visitor() {
 	this->searchCityName = searchCityName;
 	this->areaVal = areaVal;
 	success = false;
 }
 
-inline void EditLandArea::visit(City& city) {
+void EditLandArea::visit(City& city) {
 	if (city.getCityName().compare(searchCityName) == 0) {
 		cout << city.getCityName() << endl;
 		cout << "Old land area: " << city.getLandArea() << " sq mi" << endl;
@@ -51,6 +51,6 @@ inline void EditLandArea::visit(City& city) {
 	}
 }
 
-inline bool EditLandArea::getSuccess() {
+bool EditLandArea::getSuccess() {
 	return success;
 }

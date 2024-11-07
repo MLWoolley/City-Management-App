@@ -31,20 +31,20 @@ private:
 	double calcPopulationDensity(const City& c) const;
 };
 
-inline FindMaximumPopulationDensity::FindMaximumPopulationDensity() : Visitor() {
+FindMaximumPopulationDensity::FindMaximumPopulationDensity() : Visitor() {
 	maxPopDenCity.setPopulation(-1);
 	maxPopDenCity.setLandArea(1); //so pop/area = -1
 }
 
-inline void FindMaximumPopulationDensity::visit(City& city) {
+void FindMaximumPopulationDensity::visit(City& city) {
 	if (calcPopulationDensity(city) > calcPopulationDensity(maxPopDenCity))
 		maxPopDenCity = city;
 }
 
-inline City FindMaximumPopulationDensity::getMaxPopDenCity() {
+City FindMaximumPopulationDensity::getMaxPopDenCity() {
 	return maxPopDenCity;
 }
 
-inline double FindMaximumPopulationDensity::calcPopulationDensity(const City& c) const {
+double FindMaximumPopulationDensity::calcPopulationDensity(const City& c) const {
 	return c.getPopulation() / c.getLandArea();
 }
